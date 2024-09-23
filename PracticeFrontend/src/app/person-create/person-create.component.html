@@ -1,0 +1,43 @@
+<form (ngSubmit)="onSubmit()" #personForm="ngForm">
+    <div>
+      <label for="fullName">Full Name</label>
+      <input
+        type="text"
+        id="fullName"
+        required
+        [(ngModel)]="person.fullName"
+        name="fullName"
+        #fullName="ngModel"
+      />
+      <div *ngIf="fullName.invalid && fullName.touched">
+        Full Name is required.
+      </div>
+    </div>
+  
+    <div>
+      <label for="email">Email</label>
+      <input
+        type="email"
+        id="email"
+        required
+        [(ngModel)]="person.email"
+        name="email"
+        #email="ngModel"
+      />
+      <div *ngIf="email.invalid && email.touched">
+        Valid Email is required.
+      </div>
+    </div>
+  
+    <div>
+      <label for="isActive">Is Active</label>
+      <input
+        type="checkbox"
+        id="isActive"
+        [(ngModel)]="person.isActive"
+        name="isActive"
+      />
+    </div>
+  
+    <button type="submit" [disabled]="personForm.invalid">Submit</button>
+  </form>
